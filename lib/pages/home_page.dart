@@ -12,6 +12,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     HomeIndex index = BlocProvider.of(context);
+    CarouselController carouselC = CarouselController();
 
     return Scaffold(
       appBar: AppBar(
@@ -169,6 +170,7 @@ color: 'rgb(0,142,122)',
 ''',
               onMessage: (String message) {
                 index.changeIndex(int.parse(message));
+                carouselC.jumpToPage(int.parse(message));
               },
             ),
             height: 300,
@@ -178,6 +180,7 @@ color: 'rgb(0,142,122)',
             bloc: index,
             builder: (context, state) => CarouselSlider.builder(
               itemCount: carList.length,
+              carouselController: carouselC,
               itemBuilder: (context, idx, page) {
                 return Material(
                   color: Colors.grey[200],

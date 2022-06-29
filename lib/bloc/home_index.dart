@@ -7,6 +7,10 @@ class HomeIndex extends Cubit<int> {
     emit(newIndex);
   }
 
+  int getIndex() {
+    return state;
+  }
+
   @override
   void onChange(Change<int> change) {
     super.onChange(change);
